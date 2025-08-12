@@ -31,10 +31,10 @@ embeddings:
     container_name: default
     overwrite: true
   llm:
-    api_key: sk-cRtxv5U9AdK45kVNr4InXs3oIUTnnb6L3H5xJ9AaAA7qUe53
+    api_key: sk-cRtxv****Ue53
     type: openai_embedding # or azure_openai_embedding
     model: text-embedding-3-large
-    api_base: https://chatapi.littlewheat.com/v1
+    api_base: https://***.com
     # api_version: 2024-02-15-preview
     # audience: "https://cognitiveservices.azure.com/.default"
     # organization: <organization_id>
