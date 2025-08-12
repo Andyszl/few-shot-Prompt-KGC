@@ -1,4 +1,3 @@
-```markdown
 # few-shot Prompt KGC
 Few-shot Prompt for Knowledge Graph Completion
 
