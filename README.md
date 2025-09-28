@@ -112,46 +112,24 @@ data/
 # Few-shot + LoRA 训练
 nohup python peft_train.py
 ```
-### 开源数据验证 C：torchkge基线模型验证（全量数据训练及验证）
+>训练后使用最优评估结果来进行评估和测试；本项目最优的模型为./outputs/checkpoint-3450，为了充分训练，一开始训练的epoch为1000，最新代码已经启用了早停机制；
+>评估结果，./outputs/train.log
 
+
+### 开源数据验证 C：torchkge基线模型验证（全量数据训练及验证）
+对抽样数据在基线模型，transE、DistMult、CompeExModel三个模型上进行对比测试
+测试代码：./torchKGE/论文数据.ipynb
 
 
 ## 📈 Metrics
 
 * **MRR**（Mean Reciprocal Rank）
 * **Hits\@k**（k ∈ {1,3,10}）
-* 可选：Accuracy（闭集候选时）
+
 
 建议：输出总体 + 按关系频次分桶（长尾对比）+ 案例可视化（含提示与检索证据）。
 
-## 🔁 Reproducibility Checklist
 
-* 固定 `seed / k_shots / candidate_pool_size / 评测协议（是否过滤已知三元组）`
-* 公布 LLM 名称/版本、`temperature / max_tokens`
-* 贴出完整提示模板与示例采样策略
-* 标注检索 encoder/index 具体版本与参数
-* 版本化 `outputs/` 与 `config.yaml`
-
-## 🤝 Contributing
-
-欢迎 PR / Issue：
-
-* 新的数据处理脚本与评测协议
-* 更多提示模板与采样策略
-* 新的检索器、消歧与证据路由方法
-* KGE/LLM 混合推理改进
-
-## 📄 License
-
-本仓库如未附带 LICENSE 文件，默认保留所有权利；建议添加 `MIT` 或 `Apache-2.0` 许可证，便于协作与复现。
-
-## 🙏 Acknowledgements
-
-感谢社区在少样本 KGC、提示学习与图检索方向的公开工作与启发。
-
-````
-
----
 
 ### requirements.txt
 
