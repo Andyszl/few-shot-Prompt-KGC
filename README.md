@@ -14,10 +14,9 @@ Few-shot Prompt for Knowledge Graph Completion
 ## 📦 2、Repository Structure
 ```text
 few-shot-Prompt-KGC/
-├─ graphRAG/                    # 检索与上下文整理（Graph-RAG 风格，可选）
-├─ knowledge_graph_completion/  # Few-shot 任务/提示相关代码
+├─ stgrapgRAG/                    # b本研究的目标数据（Graph-RAG，结果）
+├─ training /                    # Few-shot 任务/提示相关代码
 ├─ torchKGE/                    # 传统嵌入式 KGE 基线
-├─ outputs/                     # 结果与可视化输出
 ├─ 数据抽样.ipynb
 ├─ 模型测试.ipynb
 └─ 测试代码.ipynb
@@ -100,7 +99,7 @@ data/
 
 #### 开源数据验证 A：Notebook（推荐快速上手）
 
-1. 打开 `数据抽样.ipynb`：对OpenBG500开源数据进行抽样，选择低频的数据共9894条数据，拆分为训练集和测试集，保存在/knowledge_graph_completion/data/OpenBG500下面；
+1. 打开 `数据抽样.ipynb`：对OpenBG500开源数据进行抽样，选择低频的数据共9894条数据，拆分为训练集和测试集，保存在/training/data/OpenBG500下面；
    - 训练集：train.csv，共8707条数据
    - 测试集：test.csv，共1187条数据
 2. 打开 `模型测试.ipynb`：使用抽样数据进行few-shot 有效性验证，并进行LoRA训练，使用样本数据跑通整体流程；
@@ -114,7 +113,7 @@ data/
 # Few-shot + LoRA 训练
 nohup python peft_train.py
 ```
->训练后使用最优评估结果来进行评估和测试；本项目最优的模型为./outputs/checkpoint-3450，为了充分训练，一开始训练的epoch为1000，最新代码已经启用了早停机制；
+>训练后使用最优评估结果来进行评估和测试；本项目最优的模型为./training/outputs/checkpoint-3450，为了充分训练，一开始训练的epoch为1000，最新代码已经启用了早停机制；
 >评估结果，./outputs/train.log
 
 
@@ -125,13 +124,13 @@ nohup python peft_train.py
 ### 6.2 论文数据构建
 论文数据使用《全国生态状况调查评估技术规范—生态系统服务功能评估》、《全国生态状况调查评估技术规范—生态系统质量评估》构建初始知识图谱
 
-1. 使用graphRAG创建初始图谱，生成的文件见./graphrag/output/
-2. 训练，将graphRAG创建的图谱构建三元组数据集，得到训练样本；根据训练的代码（peft_train.py）对数据进行训练；得到的训练结果见./outputs/peft_d0626，训练过程，./outputs/peft_d0626/train.log
+1. 使用graphRAG创建初始图谱，生成的文件见./stgrapgRAG/output/
+2. 训练，将graphRAG创建的图谱构建三元组数据集，得到训练样本；根据训练的代码（peft_train.py）对数据进行训练；得到的训练结果见./training/outputs/peft_d0626，训练过程，./training/outputs/peft_d0626/train.log
 3. 知识补全，将训练好的模型对初始谱图进行补全，代码./complete_isolated_nodes.py，得到补全的知识图谱文件，./new_edges.csv
 4. 将原始图谱和补全内容合并得到新的图谱，代码参看：./graphrag/query.ipynb
 
 
-## 📈 Metrics
+## 📈 7、Metrics
 
 * **MRR**（Mean Reciprocal Rank）
 * **Hits\@k**（k ∈ {1,3,10}）
@@ -141,74 +140,4 @@ nohup python peft_train.py
 
 
 
-### requirements.txt
-
-```txt
-# Core
-numpy>=1.24
-pandas>=2.0
-scipy>=1.11
-scikit-learn>=1.3
-tqdm>=4.66
-
-# Deep learning
-torch>=2.1
-torchvision>=0.16
-torchaudio>=2.1
-
-# LLM / prompts (任选其一或多家，根据你实际调用改动)
-openai>=1.30
-httpx>=0.27
-transformers>=4.42
-
-# Retrieval / text encoders (如启用 Graph-RAG/向量索引)
-sentence-transformers>=2.5
-faiss-cpu>=1.7.4
-networkx>=3.2
-
-# Utils
-pyyaml>=6.0.1
-matplotlib>=3.8
-ipykernel>=6.29
-jupyter>=1.0
-````
-
-> 如果你的 `torchKGE/` 或 `knowledge_graph_completion/` 内已固定某些库版本，请把上述版本号改成与你代码一致的范围。
-
----
-
-### config.yaml（示例）
-
-```yaml
-seed: 42
-device: "cuda:0"     # 或 "cpu"
-
-task: "tail-prediction"   # tail-prediction / head-prediction / relation-prediction
-k_shots: 5
-candidate_pool_size: 100
-
-data:
-  root: "./data"
-  dataset: "your_dataset"
-  fewshot_dir: "./data/your_dataset/fewshot"
-
-retrieval:
-  enable: true
-  topk: 8
-  encoder: "sentence-transformers/all-MiniLM-L6-v2"
-  index: "faiss"
-
-llm:
-  provider: "openai"
-  model: "gpt-4o"
-  temperature: 0.0
-  max_tokens: 512
-  api_key: "${OPENAI_API_KEY}"   # 建议用环境变量注入
-
-prompt:
-  template: "./knowledge_graph_completion/prompts/fewshot_tail.txt"
-  place_examples: "before_query"
-
-paths:
-  out_dir: "./outputs"
-```
+备注：./training/models下面用到的两个模型文件，可以在modelscope上进行下载相应的目录下进行调试
