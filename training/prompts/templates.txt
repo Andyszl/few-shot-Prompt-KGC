@@ -1,0 +1,2 @@
+# Sample template for hard prompt
+"头实体: {head} 关系: {relation} 尾实体: {tail}"
