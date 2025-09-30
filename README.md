@@ -39,62 +39,22 @@ conda activate promptkgc
 pip install -r requirements.txt
 ```
 
-## ⚙️ 4、Configuration
 
-在项目根目录新建/修改 `config.yaml`（示例）：
-
-```yaml
-seed: 42
-device: "cuda:0"     # 或 "cpu"
-
-task: "tail-prediction"   # 支持: tail-prediction / head-prediction / relation-prediction
-k_shots: 5
-candidate_pool_size: 100  # 闭集候选上限
-
-data:
-  root: "./data"
-  dataset: "your_dataset"  # 你的数据集目录名
-  fewshot_dir: "./data/your_dataset/fewshot"
-
-retrieval:
-  enable: true
-  topk: 8
-  encoder: "sentence-transformers/all-MiniLM-L6-v2"
-  index: "faiss"
-
-llm:
-  provider: "openai"      # 或 "dashscope"/"azure"/"qianfan" 等
-  model: "gpt-4o"         # 替换为你真实使用的模型
-  temperature: 0.0
-  max_tokens: 512
-  api_key: "${OPENAI_API_KEY}"   # 从环境变量读取
-
-prompt:
-  template: "./knowledge_graph_completion/prompts/fewshot_tail.txt"
-  place_examples: "before_query"  # few-shot 示例放置策略
-
-paths:
-  out_dir: "./outputs"
-```
-
-## 📚 5、Data Layout
+## 📚 4、Data Layout
 
 将数据放在 `./data/{your_dataset}/`：
 
 ```
 data/
   your_dataset/
-    train.txt       # 每行: head \t relation \t tail
-    valid.txt
-    test.txt
-    entities.txt
-    relations.txt
+    train.csv       # 每行: head \t relation \t tail
+    test.csv
 ```
 
 用 `数据抽样.ipynb` 生成 few-shot 切分（支持集/查询集），输出到 `data/your_dataset/fewshot/`，供 few-shot 提示推理与评测使用。([GitHub][1])
 
-## 🚀 6、How to Run
-### 6.1 方法论证
+## 🚀 5、How to Run
+### 5.1 方法论证
 使用开源数据集，在本方法和基线模型上进行对比，验证方法的有效性
 
 #### 开源数据验证 A：Notebook（推荐快速上手）
@@ -121,7 +81,7 @@ nohup python peft_train.py
 对抽样数据在基线模型，transE、DistMult、CompeExModel三个模型上进行对比测试
 测试代码：./torchKGE/论文数据.ipynb
 
-### 6.2 论文数据构建
+### 5.2 论文数据构建
 论文数据使用《全国生态状况调查评估技术规范—生态系统服务功能评估》、《全国生态状况调查评估技术规范—生态系统质量评估》构建初始知识图谱
 
 1. 使用graphRAG创建初始图谱，生成的文件见./stgrapgRAG/output/
@@ -130,7 +90,7 @@ nohup python peft_train.py
 4. 将原始图谱和补全内容合并得到新的图谱，代码参看：./graphrag/query.ipynb
 
 
-## 📈 7、Metrics
+## 📈 6、Metrics
 
 * **MRR**（Mean Reciprocal Rank）
 * **Hits\@k**（k ∈ {1,3,10}）
