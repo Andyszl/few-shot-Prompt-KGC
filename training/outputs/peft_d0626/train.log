@@ -1,0 +1,42 @@
+INFO:root:Model and LoRA loaded.
+INFO:root:Automatic SwanLab logging enabled, to disable set os.environ["SWANLAB_MODE"] = "disabled"
+INFO:root:Model and LoRA loaded.
+INFO:root:Automatic SwanLab logging enabled, to disable set os.environ["SWANLAB_MODE"] = "disabled"
+INFO:__main__:Eval Metrics — Hits@1: 0.6320, Hits@3: 0.7732, Hits@10: 0.8364, MRR: 0.7116
+INFO:__main__:Eval Metrics — Hits@1: 0.6506, Hits@3: 0.7621, Hits@10: 0.8178, MRR: 0.7122
+INFO:__main__:Eval Metrics — Hits@1: 0.6468, Hits@3: 0.7584, Hits@10: 0.8104, MRR: 0.7057
+INFO:__main__:Eval Metrics — Hits@1: 0.6729, Hits@3: 0.7807, Hits@10: 0.8104, MRR: 0.7258
+INFO:__main__:Eval Metrics — Hits@1: 0.6914, Hits@3: 0.7807, Hits@10: 0.8216, MRR: 0.7394
+INFO:__main__:Eval Metrics — Hits@1: 0.7026, Hits@3: 0.7807, Hits@10: 0.8178, MRR: 0.7458
+INFO:__main__:Eval Metrics — Hits@1: 0.7026, Hits@3: 0.7844, Hits@10: 0.8178, MRR: 0.7462
+INFO:__main__:Eval Metrics — Hits@1: 0.7063, Hits@3: 0.7844, Hits@10: 0.8216, MRR: 0.7492
+INFO:__main__:Eval Metrics — Hits@1: 0.7026, Hits@3: 0.7844, Hits@10: 0.8216, MRR: 0.7480
+INFO:__main__:Eval Metrics — Hits@1: 0.7026, Hits@3: 0.7844, Hits@10: 0.8216, MRR: 0.7479
+INFO:__main__:Eval Metrics — Hits@1: 0.7063, Hits@3: 0.7844, Hits@10: 0.8216, MRR: 0.7492
+INFO:__main__:Eval Metrics — Hits@1: 0.7063, Hits@3: 0.7844, Hits@10: 0.8253, MRR: 0.7504
+INFO:__main__:Eval Metrics — Hits@1: 0.7026, Hits@3: 0.7844, Hits@10: 0.8253, MRR: 0.7485
+INFO:__main__:Eval Metrics — Hits@1: 0.7026, Hits@3: 0.7844, Hits@10: 0.8253, MRR: 0.7485
+INFO:__main__:Eval Metrics — Hits@1: 0.7026, Hits@3: 0.7844, Hits@10: 0.8253, MRR: 0.7485
+INFO:__main__:Eval Metrics — Hits@1: 0.7026, Hits@3: 0.7844, Hits@10: 0.8253, MRR: 0.7485
+INFO:root:Training completed.
+INFO:root:Best adapter saved to ./outputs/peft_d0626/best_adapter
+INFO:root:Model and LoRA loaded.
+INFO:root:Automatic SwanLab logging enabled, to disable set os.environ["SWANLAB_MODE"] = "disabled"
+INFO:__main__:Eval Metrics — Hits@1: 0.6766, Hits@3: 0.8030, Hits@10: 0.8476, MRR: 0.7436
+INFO:__main__:Eval Metrics — Hits@1: 0.6989, Hits@3: 0.7993, Hits@10: 0.8290, MRR: 0.7490
+INFO:__main__:Eval Metrics — Hits@1: 0.7138, Hits@3: 0.7918, Hits@10: 0.8253, MRR: 0.7563
+INFO:__main__:Eval Metrics — Hits@1: 0.6729, Hits@3: 0.7732, Hits@10: 0.8141, MRR: 0.7253
+INFO:__main__:Eval Metrics — Hits@1: 0.7138, Hits@3: 0.7770, Hits@10: 0.8141, MRR: 0.7504
+INFO:__main__:Eval Metrics — Hits@1: 0.7286, Hits@3: 0.7844, Hits@10: 0.8141, MRR: 0.7583
+INFO:__main__:Eval Metrics — Hits@1: 0.7286, Hits@3: 0.7844, Hits@10: 0.8141, MRR: 0.7593
+INFO:__main__:Eval Metrics — Hits@1: 0.7323, Hits@3: 0.7844, Hits@10: 0.8141, MRR: 0.7619
+INFO:__main__:Eval Metrics — Hits@1: 0.7323, Hits@3: 0.7844, Hits@10: 0.8141, MRR: 0.7619
+INFO:__main__:Eval Metrics — Hits@1: 0.7361, Hits@3: 0.7881, Hits@10: 0.8141, MRR: 0.7648
+INFO:__main__:Eval Metrics — Hits@1: 0.7361, Hits@3: 0.7881, Hits@10: 0.8141, MRR: 0.7649
+INFO:__main__:Eval Metrics — Hits@1: 0.7361, Hits@3: 0.7918, Hits@10: 0.8178, MRR: 0.7660
+INFO:__main__:Eval Metrics — Hits@1: 0.7361, Hits@3: 0.7918, Hits@10: 0.8178, MRR: 0.7665
+INFO:__main__:Eval Metrics — Hits@1: 0.7361, Hits@3: 0.7918, Hits@10: 0.8178, MRR: 0.7665
+INFO:__main__:Eval Metrics — Hits@1: 0.7361, Hits@3: 0.7918, Hits@10: 0.8178, MRR: 0.7665
+INFO:__main__:Eval Metrics — Hits@1: 0.7361, Hits@3: 0.7918, Hits@10: 0.8178, MRR: 0.7665
+INFO:root:Training completed.
+INFO:root:Best adapter saved to ./outputs/peft_d0626/best_adapter
